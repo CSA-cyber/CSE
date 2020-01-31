@@ -1,0 +1,65 @@
+package CSE111.Theory.Assignment03;
+
+class Account{
+
+    public static double interestRate = 5.0;
+    private String name;
+    private double balance;
+
+    public Account(){
+        this("Default Account",0);
+    }
+
+    public Account(String name, double balance) {
+
+        this.name = name;
+        this.balance = balance;
+
+    }
+
+    public String nameKi(){
+        return this.name;
+    }
+
+    public Double balanceKi(){
+        return this.balance;
+    }
+
+    public void nameBoshao(String name) {
+        this.name = name;
+    }
+
+    public void balanceBoshao(double balance) {
+        this.balance = balance;
+    }
+
+    public void withdraw(double amount) {
+        if(100<this.balance-amount){
+            this.balance-=amount;
+            System.out.printf("Withdraw Succesful! New balance is: %.2f\n",this.balance);;
+        }
+        else
+            System.out.printf("The account balance after deducting withdraw amount is equal to or less than minimum. Cannot withdraw\n");
+    }
+}
+
+public class AccountTester {
+    public static void main(String[] args)
+    {
+        System.out.println(Account.interestRate);
+        Account a1 = new Account();
+        System.out.println(a1.nameKi());
+        System.out.println(a1.balanceKi());
+        a1.nameBoshao("Mashrafe Murtaza");
+        a1.balanceBoshao(5000);
+        System.out.println(a1.nameKi());
+        System.out.println(a1.balanceKi());
+        Account a2 = new Account("Mustafizur Rahman",50);
+        System.out.println(a2.nameKi());
+        System.out.println(a2.balanceKi());
+        a1.withdraw(4900);
+        a2.withdraw(25);
+        a1.withdraw(4899);
+
+    }
+}
